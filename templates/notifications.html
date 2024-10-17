@@ -1,22 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-2xl font-bold">Set Notifications</h1>
-    
+    <h1 class="text-2xl font-bold">Notifications</h1>
     <form method="POST" class="mt-5">
-        <select name="reminder_type" class="border p-2 rounded">
-            <option value="Bill Payment">Bill Payment</option>
-            <option value="Budget Limit">Budget Limit</option>
-        </select>
+        <input type="text" name="reminder_type" placeholder="Reminder Type" required class="border p-2 rounded">
         <input type="text" name="message" placeholder="Message" required class="border p-2 rounded ml-2">
         <input type="date" name="date" required class="border p-2 rounded ml-2">
-        <button type="submit" class="bg-blue-600 text-white p-2 rounded ml-2">Set Reminder</button>
+        <button type="submit" class="bg-blue-600 text-white p-2 rounded ml-2">Add Reminder</button>
     </form>
 
-    <h2 class="text-xl mt-5">Current Reminders</h2>
+    <h2 class="mt-5 font-bold">Current Reminders</h2>
     <ul>
-        {% for reminder_type, message, date in reminders %}
-            <li class="mt-2">{{ reminder_type }}: {{ message }} ({{ date }})</li>
+        {% for reminder in reminders %}
+            <li>{{ reminder[0] }}: {{ reminder[1] }} - Due: {{ reminder[2] }}
+                <a href="/delete-reminder/{{ loop.index0 }}" class="text-red-600 ml-2">Delete</a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

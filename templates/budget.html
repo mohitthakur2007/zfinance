@@ -2,17 +2,16 @@
 
 {% block content %}
     <h1 class="text-2xl font-bold">Set Budget</h1>
-    
     <form method="POST" class="mt-5">
         <input type="text" name="category" placeholder="Category" required class="border p-2 rounded">
         <input type="number" name="budget_amount" placeholder="Budget Amount" required class="border p-2 rounded ml-2">
         <button type="submit" class="bg-blue-600 text-white p-2 rounded ml-2">Set Budget</button>
     </form>
 
-    <h2 class="text-xl mt-5">Current Budgets</h2>
+    <h2 class="mt-5 font-bold">Current Budgets</h2>
     <ul>
         {% for category, amount in budgets.items() %}
-            <li class="mt-2">{{ category }}: ${{ amount }}</li>
+            <li>{{ category }}: ${{ amount }} - Spent: ${{ spending.get(category, 0) }}</li>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -2,11 +2,21 @@
 
 {% block content %}
     <h1 class="text-2xl font-bold">Add Expense</h1>
-    
     <form method="POST" class="mt-5">
         <input type="text" name="category" placeholder="Category" required class="border p-2 rounded">
         <input type="number" name="amount" placeholder="Amount" required class="border p-2 rounded ml-2">
         <input type="date" name="date" required class="border p-2 rounded ml-2">
+        <input type="text" name="description" placeholder="Description" class="border p-2 rounded ml-2">
+        <input type="text" name="payment_method" placeholder="Payment Method" class="border p-2 rounded ml-2">
+        <label class="ml-2">
+            <input type="checkbox" name="recurring"> Recurring
+        </label>
+        <select name="frequency" class="border p-2 rounded ml-2">
+            <option value="None">None</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Yearly">Yearly</option>
+        </select>
         <button type="submit" class="bg-blue-600 text-white p-2 rounded ml-2">Add Expense</button>
     </form>
 {% endblock %}
